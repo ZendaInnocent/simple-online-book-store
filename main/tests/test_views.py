@@ -26,3 +26,14 @@ class TestMainAppViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'main/contact.html')
         self.assertIsInstance(response.context['form'], forms.ContactForm)
+
+    
+    def test_valid_form_in_contact_page_sends_mail(self):
+        response = self.client.post(reverse('main:contact'), {
+            'name': 'Test User',
+            'message': 'Hi there!',
+        }) 
+
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, '/')
+

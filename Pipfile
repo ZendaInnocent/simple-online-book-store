@@ -5,11 +5,13 @@ verify_ssl = true
 
 [dev-packages]
 pylint = "*"
+coverage = "*"
 
 [packages]
 django = "*"
 django-crispy-forms = "*"
 django-decouple = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.8"
