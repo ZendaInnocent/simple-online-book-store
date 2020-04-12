@@ -19,3 +19,8 @@ class TestMainAppUrls(TestCase):
     def test_contact_url_resolves(self):
         contact_url = reverse('main:contact')
         self.assertEqual(resolve(contact_url).func.view_class, views.ContactView)
+
+    
+    def test_product_list_url_resolves(self):
+        product_list_url = reverse('main:product-list')
+        self.assertEqual(resolve(product_list_url).func.view_class, views.ProductListView)
