@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, FormView, ListView
+from django.views.generic import (TemplateView, FormView,
+    ListView, DetailView)
 
 from main import forms
 from main.models import Product
@@ -24,3 +25,8 @@ class ProductListView(ListView):
     model = Product
     template_name = 'main/product_list.html'
     paginate_by = 2
+
+
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'main/product_detail.html'

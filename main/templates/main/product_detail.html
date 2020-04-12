@@ -1,0 +1,35 @@
+{% extends 'main/base.html' %}
+{% load humanize %}
+
+{% block content %}
+    <table class="table">
+        <tbody>
+            <tr>
+                <td scope="row"><b>Name</b></td>
+                <td>{{ object.name }}</td>
+            </tr>
+            <tr>
+                <td scope="row"><b>Cover Images</b></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td scope="row"><b>Price</b></td>
+                <td>{{ object.price | intcomma }}</td>
+            </tr>
+            <tr>
+                <td scope="row"><b>Description</b></td>
+                <td>{{ object.description }}</td>
+            </tr>
+            <tr>
+                <td scope="row"><b>In Stock</b></td>
+                <td>{{ object.in_stock | yesno | capfirst }}</td>
+            </tr>
+            <tr>
+                <td scope="row"><b>Updated On</b></td>
+                <td>{{ object.updated | date }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+    <a href="" class="btn btn-primary mt-3">Add to Cart</a>
+{% endblock content %}
