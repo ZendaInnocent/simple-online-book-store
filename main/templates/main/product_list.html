@@ -6,7 +6,7 @@
     {% for product in object_list %}
         <p>{{ product.name }}</p>
         <p>
-            <a href="">See it here</a>
+            <a href="{{ product.get_absolute_url }}">See it here</a>
         </p>
         
         {% if not forloop.last %}

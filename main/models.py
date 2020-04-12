@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class ProductManager(models.Manager):
@@ -19,6 +20,9 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('main:product-detail', kwargs={'pk': self.pk})
 
 
 class ProductImage(models.Model):
