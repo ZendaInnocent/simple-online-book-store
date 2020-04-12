@@ -6,8 +6,22 @@ from accounts.models import CustomUser
 
 
 class CustomUserAdmin(BaseUserAdmin):
-    list_display = ('email' 'name', )
+    fieldsets = (
+        (None, {'fields': ('email', 'passowrd')}),
+        (
+            'Personal info',
+            {'fields': ('name', )},
+        ),
+    )
+    ordering = ('email', )
+    filter_horizontal = ()
+    search_fields = ('email', 'name', )
+    list_filter = ('is_superuser', )
+    list_display = ('email',
+                    'name',
+                    'is_staff', )
 
-admin.site.register(CustomUser)
+
+admin.site.register(CustomUser, CustomUserAdmin)
 
 admin.site.unregister(Group)
