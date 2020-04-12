@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 
 from main import forms
+from main.models import Product
 
 
 class TestMainAppViews(TestCase):
@@ -43,3 +44,11 @@ class TestMainAppViews(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'main/product_list.html')
+
+    
+    def test_product_detail_view_works(self):
+        product = Product.objects.create(name='product-1', price='100.00')
+        response = self.client.get(reverse('main:product-detail', kwargs={'pk': product.pk}))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'main/product_detail.html')
