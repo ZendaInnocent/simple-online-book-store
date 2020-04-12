@@ -27,7 +27,7 @@ class CustomUserManager(BaseUserManager):
             name=name,
         )
         user.is_active = True
-        user.is_admin = True
+        user.is_superuser = True
         user.save(using=self._db)
         return user
 
@@ -40,7 +40,7 @@ class CustomUser(AbstractBaseUser):
     )
     name = models.CharField(max_length=100)
     is_active = models.BooleanField(default=False)
-    is_admin = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
 
     objects = CustomUserManager()
 
@@ -64,4 +64,4 @@ class CustomUser(AbstractBaseUser):
     def is_staff(self):
         "Is the user a member of staff?"
         # Simplest possible answer: All admins are staff
-        return self.is_admin
+        return self.is_superuser
