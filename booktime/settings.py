@@ -36,6 +36,7 @@ else:
 
 INSTALLED_APPS = [
     'main',
+    'accounts',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
