@@ -2,6 +2,11 @@
 {% load humanize %}
 
 {% block content %}
+    <nav class="breadcrumb">
+        <a class="breadcrumb-item" href="{% url 'main:product-list' %}">Products</a>
+        <span class="breadcrumb-item active">{{ object.name }}</span>
+    </nav>
+
     <table class="table">
         <tbody>
             <tr>
@@ -26,7 +31,7 @@
             </tr>
             <tr>
                 <td scope="row"><b>Updated On</b></td>
-                <td>{{ object.updated | date }}</td>
+                <td>{{ object.updated | date:"F Y" }}</td>
             </tr>
         </tbody>
     </table>
