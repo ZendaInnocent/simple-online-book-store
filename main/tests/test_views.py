@@ -37,19 +37,3 @@ class TestMainAppViews(TestCase):
 
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, '/')
-
-    
-    def test_product_list_view_works(self):
-        response = self.client.get(reverse('main:product-list'))
-
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'main/product_list.html')
-
-    
-    def test_product_detail_view_works(self):
-        product = Product.objects.create(name='product-1', price='100.00')
-        response = self.client.get(reverse('main:product-detail',
-            kwargs={'pk': product.pk}))
-
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'main/product_detail.html')
