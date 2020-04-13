@@ -2,7 +2,6 @@ from django.test import TestCase
 from django.urls import reverse
 
 from main import forms
-from main.models import Product
 
 
 class TestMainAppViews(TestCase):

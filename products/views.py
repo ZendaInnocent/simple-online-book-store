@@ -5,7 +5,7 @@ from products.models import Product
 
 
 class ProductListView(ListView):
-    model = Product
+    queryset = Product.objects.active().order_by('-updated')
     template_name = 'products/product_list.html'
     paginate_by = 2
 
