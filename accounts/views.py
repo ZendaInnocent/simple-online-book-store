@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, UpdateView
 from django.urls import reverse_lazy
 
 from accounts import forms
@@ -30,3 +30,10 @@ class AddressCreateView(CreateView):
         if form.is_valid():
             form.instance.user = self.request.user
         return super().form_valid(form)
+
+
+class AddressUpdateView(UpdateView):
+    model = Address
+    fields = ('zip_code', 'city', 'country', )
+    template_name = 'accounts/address_update.html'
+    success_url = reverse_lazy('accounts:address-list')
