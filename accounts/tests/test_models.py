@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from accounts.models import CustomUser
+from accounts.models import CustomUser, Address
 
 
 class AccountsModelsTests(TestCase):
@@ -25,3 +25,12 @@ class AccountsModelsTests(TestCase):
     def test_staff_property(self):
         superuser = self.superuser
         self.assertTrue(superuser.is_staff)
+
+    def test_address_string_representation(self):
+        address = Address(
+            user = self.user,
+            zip_code = '187',
+            city = 'Sumbawanga',
+        )
+        
+        self.assertEqual(str(address), self.user.name)
