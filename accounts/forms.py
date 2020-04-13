@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
-from accounts.models import CustomUser
+from accounts.models import CustomUser, Address
 
 
 class UserChangeForm(forms.ModelForm):
@@ -47,3 +47,10 @@ class UserCreationForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+
+class AddressForm(forms.ModelForm):
+    
+    class Meta:
+        model = Address
+        fields = ('zip_code', 'city', 'country', )
