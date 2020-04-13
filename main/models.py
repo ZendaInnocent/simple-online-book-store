@@ -18,6 +18,8 @@ class Product(models.Model):
 
     objects = ProductManager()
 
+    ordering = ['updated', 'name', ]
+
     def __str__(self):
         return self.name
 
