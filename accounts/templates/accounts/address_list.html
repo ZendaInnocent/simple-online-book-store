@@ -9,12 +9,21 @@
         <h2>List of your addresses:</h2>
 
         {% for address in object_list %}
-            <p class="lead pt-4">
-                {{ address.user.name }}<br>
-                {{ address.zip_code }}<br>
-                {{ address.city }}<br>
-                {{ address.country }}<br>
-            </p>
+            <div class="lead pt-4">
+                <div class="card">
+                    <div class="card-body">
+                        {{ address.user.name }}<br>
+                        {{ address.zip_code }}<br>
+                        {{ address.city }}<br>
+                        {{ address.country }}<br>
+                    </div>
+                    <div class="card-body">
+                        <a href="" class="btn btn-secondary">Update Address</a>
+                        <a href="" class="btn btn-danger">Delete Address</a>
+                        <a href="" class="btn btn-primary">Add Address</a>
+                    </div>
+                </div>
+            </div>
         {% endfor %}
     {% else %}
         <h2>You have no addresses yet.</h2>
