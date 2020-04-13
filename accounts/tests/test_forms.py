@@ -2,14 +2,14 @@ from django.test import TestCase
 from django import forms
 
 from accounts.models import CustomUser
-from accounts.forms import UserCreationForm, AddressForm
+from accounts.forms import UserCreationForm
 
 
 class AccountsFormsTest(TestCase):
 
     def test_valid_user_registration_form(self):
         form = UserCreationForm({
-            'email': 'testuser@test.com',
+            'email': 'testuser1@test.com',
             'name': 'Test User',
             'password1': 'hoonoruru',
             'password2': 'hoonoruru',
@@ -20,7 +20,7 @@ class AccountsFormsTest(TestCase):
 
     def test_invalid_user_registration_form(self):
         form = UserCreationForm({
-            'email': 'testuser@test.com',
+            'email': 'testuser2@test.com',
             'name': 'Test User',
             'password1': 'hoonoruru',
         })
