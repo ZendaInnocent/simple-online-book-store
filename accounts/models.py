@@ -65,3 +65,19 @@ class CustomUser(AbstractBaseUser):
         "Is the user a member of staff?"
         # Simplest possible answer: All admins are staff
         return self.is_superuser
+
+
+class Address(models.Model):
+    SUPPORTED_COUNTRIES = (
+        ('TZ', 'Tanzania'),
+    )
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    zip_code = models.CharField('ZIP / Postal Code', max_length=12)
+    city = models.CharField(max_length=60)
+    country = models.CharField(max_length=3, choices=SUPPORTED_COUNTRIES, default='TZ')
+
+    class Meta:
+        verbose_name_plural = "Addresses"
+
+    def __str__(self):
+        return self.user.name

@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import Group
 
-from accounts.models import CustomUser
+from accounts.models import CustomUser, Address
 from accounts.forms import UserChangeForm, UserCreationForm
 
 
@@ -36,5 +36,15 @@ class CustomUserAdmin(BaseUserAdmin):
 
 
 admin.site.register(CustomUser, CustomUserAdmin)
+
+
+class AddressAdmin(admin.ModelAdmin):
+    list_display = ('user', 'name', 'zip_code', 'city', 'country', )
+
+    def name(self, obj):
+        return obj.user.name
+
+
+admin.site.register(Address, AddressAdmin)
 
 admin.site.unregister(Group)
