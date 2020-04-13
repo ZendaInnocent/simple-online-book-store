@@ -37,23 +37,3 @@ class AccountsFormsTest(TestCase):
         })
 
         self.assertFalse(form.is_valid())
-
-    
-    def test_valid_address_form(self):
-        form = AddressForm({
-            'user': 'user',
-            'zip_code': '187',
-            'city': 'Sumbawanga',
-            'country': 'TZ',
-        })
-
-        self.assertTrue(form.is_valid())
-
-
-    def test_invalid_address_form(self):
-        form = AddressForm({
-            'zip_code': '187',
-            'country': 'TZ',
-        })
-
-        self.assertFalse(form.is_valid())

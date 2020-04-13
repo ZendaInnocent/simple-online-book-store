@@ -23,7 +23,7 @@ class AddressListView(ListView):
 class AddressCreateView(CreateView):
     model = Address
     template_name = 'accounts/address_create.html'
-    form_class = forms.AddressForm
+    fields = ('zip_code', 'city', 'country', )
     success_url = reverse_lazy('accounts:address-list')
 
     def form_valid(self, form):

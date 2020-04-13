@@ -47,10 +47,3 @@ class UserCreationForm(forms.ModelForm):
         if commit:
             user.save()
         return user
-
-
-class AddressForm(forms.ModelForm):
-    
-    class Meta:
-        model = Address
-        fields = ('zip_code', 'city', 'country', )
