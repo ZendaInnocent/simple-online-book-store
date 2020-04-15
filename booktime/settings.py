@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'main',
     'accounts',
     'products.apps.ProductsConfig',
+    'cart.apps.CartConfig',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
