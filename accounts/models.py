@@ -67,6 +67,11 @@ class CustomUser(AbstractBaseUser):
         return self.is_superuser
 
 
+ADDRESS_CHOICES = (
+    ('B', 'Billing'),
+    ('S', 'Shipping'),
+)
+
 class Address(models.Model):
     SUPPORTED_COUNTRIES = (
         ('TZ', 'Tanzania'),
@@ -75,6 +80,7 @@ class Address(models.Model):
     zip_code = models.CharField('ZIP / Postal Code', max_length=12)
     city = models.CharField(max_length=60)
     country = models.CharField(max_length=3, choices=SUPPORTED_COUNTRIES, default='TZ')
+    address_type = models.CharField(max_length=1, choices=ADDRESS_CHOICES)
 
     class Meta:
         verbose_name_plural = "Addresses"

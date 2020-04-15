@@ -22,7 +22,7 @@ class Product(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('main:product-detail', kwargs={'pk': self.pk})
+        return reverse('products:product-detail', kwargs={'pk': self.pk})
 
 
 class ProductImage(models.Model):
