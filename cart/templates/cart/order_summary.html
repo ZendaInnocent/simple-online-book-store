@@ -31,7 +31,7 @@
                 </td>
                 <td>{{ cart.get_total_item_price }} </td>
                 <td>
-                    <a href="" class="btn btn-danger">Remove</a>
+                    <a href="{% url 'cart:remove-from-cart' cart.item.slug %}" class="btn btn-danger">Remove</a>
                 </td>
             </tr>
             {% endfor %}
