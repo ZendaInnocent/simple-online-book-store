@@ -36,5 +36,5 @@
         </tbody>
     </table>
     <hr>
-    <a href="" class="btn btn-primary mt-3">Add to Cart</a>
+    <a href="{% url 'cart:add-to-cart' object.slug %}" class="btn btn-primary mt-3">Add to Cart</a>
 {% endblock content %}
