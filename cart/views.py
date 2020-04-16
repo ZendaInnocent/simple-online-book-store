@@ -88,14 +88,28 @@ def remove_item_from_cart(request, slug):
     return redirect(reverse('products:product-detail', kwargs={'slug':slug}))
 
 
-def increase_cart(request, slug):
+def increase_item_in_cart(request, slug):
   item = get_object_or_404(Product, slug=slug)
-  cart_qs = Cart.objects.filter(user=request.user, item=item)
-
-  if cart_qs.exists():
-    cart = cart_qs[0]
-    # Checking the cart quantity
-    if cart.quantity >= 1:
-      cart.quantity += 1
-      cart.save()
-  return redirect('cart:order-summary')
+  order_qs = Order.objects.filter(
+      user=request.user,
+      ordered=False
+  )
+  if order_qs.exists():
+    order = order_qs[0]
+    # check if the order item is in the order
+    if order.order_items.filter(item__slug=item.slug).exists():
+      order_item = Cart.objects.filter(
+        item=item,
+        user=request.user
+      )[0]
+      if order_item.quantity:
+        order_item.quantity += 1
+        order_item.save()
+      messages.info(request, f"{item.name} quantity has updated.")
+      return redirect("cart:order-summary")
+    else:
+      messages.info(request, f"{item.name} quantity has updated.")
+      return redirect("cart:order-summary")
+  else:
+    messages.info(request, "You do not have an active order")
+    return redirect("cart:order-summary")
