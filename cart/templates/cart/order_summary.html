@@ -26,7 +26,7 @@
                       <span class="badge badge-light"><i class="fa fa-minus"></i></span>
                     </a>
                     {{ cart.quantity }}
-                    <a class="ml-2" href="" >
+                    <a class="ml-2" href="{% url 'cart:increase-cart' cart.item.slug %}" >
                       <span class="badge badge-light"><i class="fa fa-plus"></i></span>
                     </a>
                 </td>
