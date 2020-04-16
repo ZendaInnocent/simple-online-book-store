@@ -22,7 +22,7 @@
                 <th scope="row">{{ forloop.counter }}</th>
                 <td>{{ cart.item.name }}</td>
                 <td>
-                    <a class="mr-2" href="">
+                    <a class="mr-2" href="{% url 'cart:decrease-cart' cart.item.slug %}">
                       <span class="badge badge-light"><i class="fa fa-minus"></i></span>
                     </a>
                     {{ cart.quantity }}
